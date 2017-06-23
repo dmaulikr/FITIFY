@@ -7,11 +7,16 @@
 //
 
 import Foundation
+import UIKit
 
 public class Excercise {
     var name: String
+    var description: String
+    var img: UIImage!
     
-    init(name: String) {
+    init(name: String, desc: String, image: UIImage) {
         self.name = name
+        self.description = desc
+        self.img = image
     }
 }

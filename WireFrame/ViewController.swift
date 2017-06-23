@@ -25,7 +25,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     @IBOutlet weak var tableView: UITableView!
     var uglyThings = ["s1", "s2", "s3"]
     var alternates = ["s4", "s5"]
-    var uglyTitles = ["lunge", "squat", "cool"]
+    var uglyTitles = ["Lunge", "Squat", "Cool"]
     
     func registerLocal() {
         let center = UNUserNotificationCenter.current()
@@ -40,10 +40,10 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     }
     
     func setCategories(){
-        let snoozeAction = UNNotificationAction(identifier: "snooze", title: "Snooze 5 Sec", options: [])
-        let helloAction = UNNotificationAction(identifier: "hello", title: "Print Hello", options: [])
+        let snoozeAction = UNNotificationAction(identifier: "snooze", title: "Done", options: [])
+        let helloAction = UNNotificationAction(identifier: "hello", title: "Replace", options: [])
 
-        let commentAction = UNTextInputNotificationAction(identifier: "comment", title: "Add Comment", options: [], textInputButtonTitle: "Add", textInputPlaceholder: "Add Comment Here")
+        let commentAction = UNTextInputNotificationAction(identifier: "comment", title: "Skip", options: [], textInputButtonTitle: "Add", textInputPlaceholder: "Add Comment Here")
         let alarmCategory = UNNotificationCategory(identifier: "alarm.category",actions: [snoozeAction,commentAction, helloAction],intentIdentifiers: [], options: [])
         UNUserNotificationCenter.current().setNotificationCategories([alarmCategory])
     }
@@ -63,6 +63,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
         let identifier = response.actionIdentifier
         let request = response.notification.request
         
@@ -171,7 +172,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let e = Excercise(name: uglyTitles[indexPath.row])
+        let e = Excercise(name: uglyTitles[indexPath.row], desc: "This is a description", image: UIImage(named: "s1")!)
         performSegue(withIdentifier: "info", sender: e)
     }
     
