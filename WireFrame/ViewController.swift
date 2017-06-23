@@ -9,22 +9,16 @@
 import UIKit
 import UserNotifications
 
-extension Date {
+class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    init?(dateString: String) {
-        let dateStringFormatter = DateFormatter()
-        dateStringFormatter.dateFormat = "yyyy-MM-dd"
-        if let d = dateStringFormatter.date(from: dateString) {
-            self.init(timeInterval: 0, since: d)
-        } else {
-            return nil
-        }
-    }
-}
-class ViewController: UIViewController,UNUserNotificationCenterDelegate, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var startWorkout: UIButton!
     
-
-    let time:TimeInterval = 10.0
+    @IBOutlet weak var weightLossLbL: UILabel!
+    @IBOutlet weak var dayLbl: UILabel!
+    
+    
+    
+    let time:TimeInterval = 3.0
     let snooze:TimeInterval = 5.0
     var isGrantedAccess = false
     
@@ -45,33 +39,12 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate, UITable
         }
     }
     
-    func scheduleLocal() {
-        let center = UNUserNotificationCenter.current()
-        
-        
-        
-        let content = UNMutableNotificationContent()
-        content.title = "Late wake up call"
-        content.body = "Did you finish the excercise?"
-        content.categoryIdentifier = "myCategory"
-        content.userInfo = ["customData": "fizzbuzz"]
-        content.sound = UNNotificationSound.default()
-        
-        
-        var dateComponents = DateComponents()
-        dateComponents.hour = 16
-        dateComponents.minute = 53
-        //let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        
-        center.add(request)
-    }
-    
     func setCategories(){
         let snoozeAction = UNNotificationAction(identifier: "snooze", title: "Snooze 5 Sec", options: [])
+        let helloAction = UNNotificationAction(identifier: "hello", title: "Print Hello", options: [])
+
         let commentAction = UNTextInputNotificationAction(identifier: "comment", title: "Add Comment", options: [], textInputButtonTitle: "Add", textInputPlaceholder: "Add Comment Here")
-        let alarmCategory = UNNotificationCategory(identifier: "alarm.category",actions: [snoozeAction,commentAction],intentIdentifiers: [], options: [])
+        let alarmCategory = UNNotificationCategory(identifier: "alarm.category",actions: [snoozeAction,commentAction, helloAction],intentIdentifiers: [], options: [])
         UNUserNotificationCenter.current().setNotificationCategories([alarmCategory])
     }
     
@@ -88,10 +61,12 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate, UITable
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert,.sound])
     }
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let identifier = response.actionIdentifier
         let request = response.notification.request
-        if identifier == "snooze"{
+        
+        if identifier == "snooze" {
             let newContent = request.content.mutableCopy() as! UNMutableNotificationContent
             newContent.body = "Snooze 5 Seconds"
             newContent.subtitle = "Snooze 5 Seconds"
@@ -100,7 +75,7 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate, UITable
             
         }
         
-        if identifier == "comment"{
+        if identifier == "comment" {
             let textResponse = response as! UNTextInputNotificationResponse
             //commentsLabel.text = textResponse.userText
             let newContent = request.content.mutableCopy() as! UNMutableNotificationContent
@@ -108,14 +83,20 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate, UITable
             addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
         }
         
+        if identifier == "hello" {
+            let newContent = request.content.mutableCopy() as! UNMutableNotificationContent
+            print("\n\n\n\n\n\n asdfasdfdsafdasdfsaads \n\n\n\n\n\n\n\n")
+            addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
+        }
+//        weightLossLbL.font = UIFont(name: "Rubik300.ttf", size: 20.0)
+        
         completionHandler()
     }
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        startWorkout.layer.cornerRadius = 5
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(
             options: [.alert,.sound,.badge],
@@ -131,18 +112,8 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate, UITable
                 }
         })
         
-        //registerLocal()
-        //scheduleLocal()
-        
-        
-        //let delegate = UIApplication.shared.delegate as? AppDelegate
-        //delegate?.scheduleNotification()
-        
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
-        print("Hello")
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -178,13 +149,12 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate, UITable
             content.title = "Alarm"
             content.subtitle = "First Alarm"
             content.body = "First Alarm"
-            content.sound = UNNotificationSound.default()
+            //content.sound = UNNotificationSound.default()
             content.categoryIdentifier = "alarm.category"
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
             addNotification(content: content, trigger: trigger , indentifier: "Alarm")
         }
     }
-    
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
@@ -214,8 +184,5 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate, UITable
             }
         }
     }
-    
-    
-    
 }
 

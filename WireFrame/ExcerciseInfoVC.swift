@@ -17,6 +17,11 @@ class ExcerciseInfoVC: UIViewController {
     @IBOutlet weak var weightCount: UILabel!
     
     
+    @IBOutlet weak var replaceBtn: UIButton!
+    
+    @IBOutlet weak var skipBtn: UIButton!
+    
+    @IBOutlet weak var doneBtn: UIButton!
     
     @IBOutlet weak var excerciseNameLbl: UILabel!
     
@@ -24,6 +29,9 @@ class ExcerciseInfoVC: UIViewController {
         super.viewDidLoad()
         excerciseNameLbl.text = str.name
         // Do any additional setup after loading the view.
+        doneBtn.layer.cornerRadius = 5
+        skipBtn.layer.cornerRadius = 5
+        replaceBtn.layer.cornerRadius = 5
     }
 
     override func didReceiveMemoryWarning() {
