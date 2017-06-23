@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>LockExtension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>WireFrame.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>26A24B121EFB474E001A1943</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>26A24B341EFC54CF001A1943</key>
 		<dict>
 			<key>primary</key>
 			<true/>

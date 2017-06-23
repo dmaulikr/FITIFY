@@ -7,15 +7,52 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+
     var window: UIWindow?
+    
 
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    
+//    func scheduleNotification() {
+//        let center = UNUserNotificationCenter.current()
+//        
+//        
+//        
+//        let content = UNMutableNotificationContent()
+//        content.title = "Late wake up call"
+//        content.body = "Did you finish the excercise?"
+//        content.categoryIdentifier = "myCategory"
+//        //content.userInfo = ["customData": "fizzbuzz"]
+//        content.sound = UNNotificationSound.default()
+//        
+//        
+//        var dateComponents = DateComponents()
+//        dateComponents.hour = 16
+//        dateComponents.minute = 53
+//        //let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+//        let request = UNNotificationRequest(identifier: "textNotification", content: content, trigger: trigger)
+//        UNUserNotificationCenter.current().delegate = self
+//        center.removeAllPendingNotificationRequests()
+//        center.add(request)
+//    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, error) in
+            if !accepted {
+                print("Notification access denied.")
+            }
+        }
+        
+        let action = UNNotificationAction(identifier: "remindLater", title: "Remind me later", options: [])
+        let category = UNNotificationCategory(identifier: "myCategory", actions: [action], intentIdentifiers: [], options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([category])
+        
         return true
     }
 
