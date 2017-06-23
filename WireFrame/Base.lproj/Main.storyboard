@@ -633,7 +633,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QOH-Cz-Nja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1810" y="138"/>
+            <point key="canvasLocation" x="-1865" y="866"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="TCP-Qm-gFz">
@@ -685,6 +685,9 @@
                                         <state key="normal" title="Yes">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="aYV-Tz-AP8" kind="show" id="G9B-TO-83K"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="191-j9-XRh">
                                         <rect key="frame" x="0.0" y="181" width="374" height="101"/>
@@ -697,6 +700,9 @@
                                         <state key="normal" title="No">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="aYV-Tz-AP8" kind="show" id="FiT-ot-yeH"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAK-zB-cMb">
                                         <rect key="frame" x="0.0" y="362" width="374" height="101"/>
@@ -709,6 +715,9 @@
                                         <state key="normal" title="Maybe">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="aYV-Tz-AP8" kind="show" id="Rsp-aQ-w6j"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -753,33 +762,109 @@
                                     <constraint firstAttribute="height" constant="70" id="14b-YN-mjf"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please choose one of the following fitness goals and click next" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZP-TI-AQ3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose one of the following fitness goals and click next" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZP-TI-AQ3">
                                 <rect key="frame" x="20" y="90" width="374" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="374" id="JP7-Ce-1QC"/>
+                                    <constraint firstAttribute="height" constant="68" id="lwV-4v-819"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBB-QV-3XI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBB-QV-3XI">
                                 <rect key="frame" x="20" y="166" width="154" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="R4E-5t-osg"/>
+                                    <constraint firstAttribute="width" constant="154" id="RaP-rT-qxf"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rth-3T-3s4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your goal is blah Your goal is blah Your goal is blah Your goal is blah Your goal is blah Your goal is blah" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rth-3T-3s4">
                                 <rect key="frame" x="20" y="207" width="374" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="c7d-8c-nEi"/>
+                                    <constraint firstAttribute="width" constant="374" id="fTi-Ai-hYc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FNb-dT-fbO">
+                                <rect key="frame" x="61" y="296" width="292" height="283"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Go-7s-J32">
+                                        <rect key="frame" x="0.0" y="0.0" width="292" height="81"/>
+                                        <color key="backgroundColor" red="0.45696700890000003" green="0.6599144629" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="81" id="3OP-SQ-Ybd"/>
+                                            <constraint firstAttribute="width" constant="292" id="hAw-fG-QnZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik" pointSize="30"/>
+                                        <state key="normal" title="Lose 10 Lbs">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeM-yE-ZPS">
+                                        <rect key="frame" x="0.0" y="101" width="292" height="81"/>
+                                        <color key="backgroundColor" red="0.45696700890000003" green="0.6599144629" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="81" id="Jtz-EK-Z3t"/>
+                                            <constraint firstAttribute="width" constant="292" id="fWo-4C-lOv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik" pointSize="30"/>
+                                        <state key="normal" title="Bigger Upper Body">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DaA-0P-Hah">
+                                        <rect key="frame" x="0.0" y="202" width="292" height="81"/>
+                                        <color key="backgroundColor" red="0.45696700890000003" green="0.6599144629" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="81" id="05V-RP-jcR"/>
+                                            <constraint firstAttribute="width" constant="292" id="5aS-cu-81M"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik" pointSize="30"/>
+                                        <state key="normal" title="More Stamina">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sgv-5W-p5T">
+                                <rect key="frame" x="61" y="607" width="292" height="81"/>
+                                <color key="backgroundColor" red="0.12483586800000002" green="0.55010440775779645" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="292" id="4Kz-G0-tcs"/>
+                                    <constraint firstAttribute="height" constant="81" id="Bnn-Uk-ceR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik" pointSize="30"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="awL-xI-Fri"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Sgv-5W-p5T" firstAttribute="centerX" secondItem="b5P-Kr-Pmq" secondAttribute="centerX" id="6Jz-kQ-xV4"/>
+                            <constraint firstItem="FNb-dT-fbO" firstAttribute="top" secondItem="rth-3T-3s4" secondAttribute="bottom" constant="22" id="Fjr-uu-VuG"/>
+                            <constraint firstItem="sZP-TI-AQ3" firstAttribute="leading" secondItem="b5P-Kr-Pmq" secondAttribute="leadingMargin" id="G3m-D0-hqx"/>
+                            <constraint firstItem="Sgv-5W-p5T" firstAttribute="top" secondItem="FNb-dT-fbO" secondAttribute="bottom" constant="28" id="L2B-Kh-Lg6"/>
+                            <constraint firstItem="sZP-TI-AQ3" firstAttribute="trailing" secondItem="b5P-Kr-Pmq" secondAttribute="trailingMargin" id="MhU-DG-ttG"/>
                             <constraint firstItem="Opt-Aq-dHK" firstAttribute="top" secondItem="b5P-Kr-Pmq" secondAttribute="top" id="Nld-V4-E3p"/>
+                            <constraint firstItem="SBB-QV-3XI" firstAttribute="leading" secondItem="b5P-Kr-Pmq" secondAttribute="leadingMargin" id="OPU-Uv-l6C"/>
                             <constraint firstAttribute="trailing" secondItem="Opt-Aq-dHK" secondAttribute="trailing" id="UFI-05-gRg"/>
+                            <constraint firstItem="FNb-dT-fbO" firstAttribute="centerX" secondItem="b5P-Kr-Pmq" secondAttribute="centerX" id="Z4E-Ts-7hO"/>
+                            <constraint firstItem="rth-3T-3s4" firstAttribute="leading" secondItem="b5P-Kr-Pmq" secondAttribute="leadingMargin" id="eWn-fI-gZ1"/>
+                            <constraint firstItem="SBB-QV-3XI" firstAttribute="top" secondItem="sZP-TI-AQ3" secondAttribute="bottom" constant="8" id="kFV-LZ-JiA"/>
                             <constraint firstItem="Opt-Aq-dHK" firstAttribute="leading" secondItem="b5P-Kr-Pmq" secondAttribute="leading" id="vwU-fV-q7h"/>
+                            <constraint firstItem="sZP-TI-AQ3" firstAttribute="top" secondItem="Opt-Aq-dHK" secondAttribute="bottom" constant="20" id="xsF-XL-Djc"/>
+                            <constraint firstItem="rth-3T-3s4" firstAttribute="top" secondItem="SBB-QV-3XI" secondAttribute="bottom" constant="8" id="z28-j9-Mzt"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -793,6 +878,8 @@
         <image name="ribbon" width="425" height="602"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="awL-xI-Fri"/>
+        <segue reference="Rsp-aQ-w6j"/>
         <segue reference="fwU-RA-RFt"/>
     </inferredMetricsTieBreakers>
 </document>
