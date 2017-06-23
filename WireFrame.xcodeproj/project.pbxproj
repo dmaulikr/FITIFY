@@ -34,6 +34,7 @@
 		26E8AB011EFD967A0059C175 /* Rubik italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26E8AAF61EFD93090059C175 /* Rubik italic.ttf */; };
 		26E8AB021EFD967A0059C175 /* Rubikregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26E8AAF71EFD93090059C175 /* Rubikregular.ttf */; };
 		26E8AB061EFDB0180059C175 /* QuizStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E8AB051EFDB0180059C175 /* QuizStartVC.swift */; };
+		26E8AB081EFDCB1E0059C175 /* ExcerciseHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E8AB071EFDCB1E0059C175 /* ExcerciseHistoryVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		26E8AAF61EFD93090059C175 /* Rubik italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik italic.ttf"; sourceTree = "<group>"; };
 		26E8AAF71EFD93090059C175 /* Rubikregular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rubikregular.ttf; sourceTree = "<group>"; };
 		26E8AB051EFDB0180059C175 /* QuizStartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizStartVC.swift; sourceTree = "<group>"; };
+		26E8AB071EFDCB1E0059C175 /* ExcerciseHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExcerciseHistoryVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 				26A24B001EFB474E001A1943 /* LaunchScreen.storyboard */,
 				26E8AB051EFDB0180059C175 /* QuizStartVC.swift */,
 				26A24B031EFB474E001A1943 /* Info.plist */,
+				26E8AB071EFDCB1E0059C175 /* ExcerciseHistoryVC.swift */,
 			);
 			path = WireFrame;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26E8AB081EFDCB1E0059C175 /* ExcerciseHistoryVC.swift in Sources */,
 				26A24B2E1EFB57D0001A1943 /* ExcerciseInfoVC.swift in Sources */,
 				26A24B261EFB4C0B001A1943 /* UglyCell.swift in Sources */,
 				26A24AFA1EFB474E001A1943 /* ViewController.swift in Sources */,
