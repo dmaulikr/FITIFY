@@ -12,11 +12,8 @@ import UserNotifications
 class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var startWorkout: UIButton!
-    
     @IBOutlet weak var weightLossLbL: UILabel!
     @IBOutlet weak var dayLbl: UILabel!
-    
-    
     
     let time:TimeInterval = 3.0
     let snooze:TimeInterval = 5.0
@@ -89,7 +86,6 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
             print("\n\n\n\n\n\n asdfasdfdsafdasdfsaads \n\n\n\n\n\n\n\n")
             addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
         }
-//        weightLossLbL.font = UIFont(name: "Rubik300.ttf", size: 20.0)
         
         completionHandler()
     }
@@ -183,6 +179,9 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
                     detailsVC.str = str
                 }
             }
+        }
+        if segue.identifier == "history" {
+            
         }
     }
 }
