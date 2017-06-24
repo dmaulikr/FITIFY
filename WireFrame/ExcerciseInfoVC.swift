@@ -11,7 +11,7 @@ import UIKit
 class ExcerciseInfoVC: UIViewController {
     
     public var str: Excercise!
-    
+    public var temporaryArray: [Excercise]!
     
     @IBOutlet weak var setsCount: UILabel!
     @IBOutlet weak var repsCount: UILabel!
@@ -65,15 +65,23 @@ class ExcerciseInfoVC: UIViewController {
         weightCount.text = Int(sender.value).description
     }
     
+    
+    
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "doneInfo" {
+//            if let detailsVC = segue.destination as? ViewController {
+//                
+//                detailsVC.excercisePlaylist = temporaryArray
+//                
+//            }
+//        }
+//        
+//    }
+    
 
 }

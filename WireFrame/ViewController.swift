@@ -20,9 +20,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     var isGrantedAccess = false
     
     @IBOutlet weak var tableView: UITableView!
-    var uglyThings = ["s1", "s2", "s3"]
-    var alternates = ["s4", "s5"]
-    var uglyTitles = ["Lunge", "Squat", "Cool"]
+    var transferExcercise: Excercise!
     
     func registerLocal() {
         let center = UNUserNotificationCenter.current()
@@ -37,10 +35,10 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     }
     
     func setCategories(){
-        let snoozeAction = UNNotificationAction(identifier: "snooze", title: "Done", options: [])
-        let helloAction = UNNotificationAction(identifier: "hello", title: "Replace", options: [])
+        let snoozeAction = UNNotificationAction(identifier: "done", title: "Done", options: [])
+        let helloAction = UNNotificationAction(identifier: "replace", title: "Replace", options: [])
 
-        let commentAction = UNTextInputNotificationAction(identifier: "comment", title: "Skip", options: [], textInputButtonTitle: "Add", textInputPlaceholder: "Add Comment Here")
+        let commentAction = UNNotificationAction(identifier: "skip", title: "Skip", options: [])
         let alarmCategory = UNNotificationCategory(identifier: "alarm.category",actions: [snoozeAction,commentAction, helloAction],intentIdentifiers: [], options: [])
         UNUserNotificationCenter.current().setNotificationCategories([alarmCategory])
     }
@@ -64,32 +62,38 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
         let identifier = response.actionIdentifier
         let request = response.notification.request
         
-        if identifier == "snooze" {
+        if identifier == "done" {
             let newContent = request.content.mutableCopy() as! UNMutableNotificationContent
-            newContent.body = "Snooze 5 Seconds"
-            newContent.subtitle = "Snooze 5 Seconds"
-            let newTrigger = UNTimeIntervalNotificationTrigger(timeInterval: snooze, repeats: false)
-            addNotification(content: newContent, trigger: newTrigger, indentifier: request.identifier)
+            CURRENT_EXCERCISE += 1
+            if CURRENT_EXCERCISE >= excercisePlaylist.count {
+                newContent.body = "Workout Complete 🙂"
+                addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
+                return
+            }
+            newContent.body = "Your current excercise is: \(excercisePlaylist[CURRENT_EXCERCISE].name)"
+            addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
             
         }
         
-        if identifier == "comment" {
-            let textResponse = response as! UNTextInputNotificationResponse
-            //commentsLabel.text = textResponse.userText
+        if identifier == "skip" {
             let newContent = request.content.mutableCopy() as! UNMutableNotificationContent
-            newContent.body = textResponse.userText
+            excercisePlaylist.remove(at: 0)
+            newContent.body = "Your Current Excercise is: \(excercisePlaylist[0].name)"
+            self.tableView.reloadData()
             addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
         }
         
-        if identifier == "hello" {
+        if identifier == "replace" {
             let newContent = request.content.mutableCopy() as! UNMutableNotificationContent
-            print("\n\n\n\n\n\n asdfasdfdsafdasdfsaads \n\n\n\n\n\n\n\n")
+            excercisePlaylist.remove(at: 0)
+            excercisePlaylist.append(alternateExcercises.remove(at: alternateExcercises.endIndex-1))
+            newContent.body = "Your Current Excercise is: \(excercisePlaylist[0].name)"
+            self.tableView.reloadData()
             addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
         }
         
         completionHandler()
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,13 +115,13 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
         
         tableView.delegate = self
         tableView.dataSource = self
+        //self.tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "uglycell") as? UglyCell {
-            let item = uglyThings[indexPath.row]
-            let img = UIImage(named: item)
-            cell.configureCell(image: img!, text: uglyTitles[indexPath.row])
+            let excercise = excercisePlaylist[indexPath.row]
+            cell.configureCell(image: excercise.img!, text: excercise.name)
             return cell
         }
         return UglyCell()
@@ -128,7 +132,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return uglyThings.count
+        return excercisePlaylist.count
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -141,12 +145,12 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     }
     
     @IBAction func startButton(_ sender: Any) {
+        
         if isGrantedAccess{
             let content = UNMutableNotificationContent()
-            content.title = "Alarm"
-            content.subtitle = "First Alarm"
+            content.title = "FITIFY Workout"
+            //content.subtitle = "First Alarm"
             content.body = "First Alarm"
-            //content.sound = UNNotificationSound.default()
             content.categoryIdentifier = "alarm.category"
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
             addNotification(content: content, trigger: trigger , indentifier: "Alarm")
@@ -156,19 +160,17 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let more = UITableViewRowAction(style: .normal, title: "Change Excercise") { action, index in
-            print("more button tapped")
-            self.uglyThings.remove(at: indexPath.row)
-            self.uglyThings.append((self.alternates[self.alternates.count-1]))
-            self.alternates.remove(at: self.alternates.count-1)
+            excercisePlaylist.remove(at: indexPath.row)
+            excercisePlaylist.append(alternateExcercises.remove(at: alternateExcercises.endIndex-1))
             self.tableView.reloadData()
         }
-        more.backgroundColor = UIColor.lightGray
+        more.backgroundColor = UIColor.red
         
         return [more]
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let e = Excercise(name: uglyTitles[indexPath.row], desc: "This is a description", image: UIImage(named: "s1")!)
+        let e = excercisePlaylist[indexPath.row]
         performSegue(withIdentifier: "info", sender: e)
     }
     
@@ -177,6 +179,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
             if let detailsVC = segue.destination as? ExcerciseInfoVC {
                 if let str = sender as? Excercise {
                     detailsVC.str = str
+                    detailsVC.temporaryArray = excercisePlaylist
                 }
             }
         }

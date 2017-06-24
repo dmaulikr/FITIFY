@@ -360,7 +360,7 @@
                                             <color key="titleColor" red="0.96700131379999998" green="0.96700131379999998" blue="0.96700131379999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="jM6-tj-PHk"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="doneInfo" id="jM6-tj-PHk"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEW-1p-wO4">
@@ -964,7 +964,7 @@
                                 <rect key="frame" x="0.0" y="69" width="414" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Workout History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1w-T6-vmq">
-                                        <rect key="frame" x="62" y="19" width="290.33333333333331" height="37"/>
+                                        <rect key="frame" x="62.333333333333343" y="19" width="290.33333333333337" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="frC-WQ-8PG"/>
                                         </constraints>
@@ -1134,7 +1134,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="cKI-lJ-GcU"/>
         <segue reference="Ni3-t6-jLi"/>
-        <segue reference="awL-xI-Fri"/>
+        <segue reference="jM6-tj-PHk"/>
         <segue reference="ZcN-8D-ePh"/>
         <segue reference="HJh-Js-3a7"/>
     </inferredMetricsTieBreakers>
