@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2684ACDE1EFEC1950057820B /* GoalChoiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2684ACDD1EFEC1950057820B /* GoalChoiceVC.swift */; };
 		268E9D5E1EFDFEF500C345D8 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268E9D5D1EFDFEF500C345D8 /* HistoryCell.swift */; };
 		268E9D601EFE076600C345D8 /* HistoryInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268E9D5F1EFE076600C345D8 /* HistoryInfoVC.swift */; };
 		26A24AF81EFB474E001A1943 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A24AF71EFB474E001A1943 /* AppDelegate.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2684ACDD1EFEC1950057820B /* GoalChoiceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalChoiceVC.swift; sourceTree = "<group>"; };
 		268E9D5D1EFDFEF500C345D8 /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		268E9D5F1EFE076600C345D8 /* HistoryInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryInfoVC.swift; sourceTree = "<group>"; };
 		26A24AF41EFB474E001A1943 /* WireFrame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WireFrame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,6 +208,7 @@
 				26A24B031EFB474E001A1943 /* Info.plist */,
 				26E8AB071EFDCB1E0059C175 /* ExcerciseHistoryVC.swift */,
 				268E9D5F1EFE076600C345D8 /* HistoryInfoVC.swift */,
+				2684ACDD1EFEC1950057820B /* GoalChoiceVC.swift */,
 			);
 			path = WireFrame;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				26A24AFA1EFB474E001A1943 /* ViewController.swift in Sources */,
 				26A24B301EFB5D3F001A1943 /* Excercise.swift in Sources */,
 				26E8AB061EFDB0180059C175 /* QuizStartVC.swift in Sources */,
+				2684ACDE1EFEC1950057820B /* GoalChoiceVC.swift in Sources */,
 				268E9D601EFE076600C345D8 /* HistoryInfoVC.swift in Sources */,
 				268E9D5E1EFDFEF500C345D8 /* HistoryCell.swift in Sources */,
 				26A24AF81EFB474E001A1943 /* AppDelegate.swift in Sources */,
