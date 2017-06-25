@@ -27,7 +27,6 @@ class ExcerciseHistoryVC: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell") as? HistoryCell {
-            let item = excercises[indexPath.row]
             cell.configureCell(text: excercises[indexPath.row])
             return cell
         }
@@ -64,7 +63,5 @@ class ExcerciseHistoryVC: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
         }
-
     }
-    
 }

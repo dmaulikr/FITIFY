@@ -72,7 +72,6 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
             }
             newContent.body = "Your current excercise is: \(excercisePlaylist[CURRENT_EXCERCISE].name)"
             addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
-            
         }
         
         if identifier == "skip" {
@@ -115,7 +114,6 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
         
         tableView.delegate = self
         tableView.dataSource = self
-        //self.tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -150,7 +148,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
             let content = UNMutableNotificationContent()
             content.title = "FITIFY Workout"
             //content.subtitle = "First Alarm"
-            content.body = "First Alarm"
+            content.body = "Your current excercise is: \(excercisePlaylist[CURRENT_EXCERCISE].name)"
             content.categoryIdentifier = "alarm.category"
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
             addNotification(content: content, trigger: trigger , indentifier: "Alarm")
