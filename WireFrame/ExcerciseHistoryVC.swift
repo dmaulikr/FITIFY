@@ -10,14 +10,32 @@ import UIKit
 
 class ExcerciseHistoryVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    var excercises: [String] = ["Bench Press", "Lunge", "Crunch"]
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
-    var excercises = ["Bench Press", "Lunge", "Crunch"]
+    
+    
+    @IBAction func indexChanged(_ sender: Any) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            excercises = ["Bench Press", "Lunge", "Crunch"]
+            self.tableView.reloadData()
+            break
+        case 1:
+            excercises = ["Leg Day", "Arm Day", "Abs Day"]
+            self.tableView.reloadData()
+            break
+        default:
+            break
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,6 +46,10 @@ class ExcerciseHistoryVC: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell") as? HistoryCell {
             cell.configureCell(text: excercises[indexPath.row])
+            cell.backgroundColor = UIColor.white
+            if excercises[indexPath.row] == "Bench Press" {
+                cell.backgroundColor = UIColor.red
+            }
             return cell
         }
         return UglyCell()

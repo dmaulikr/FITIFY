@@ -23,6 +23,8 @@ class ExcerciseInfoVC: UIViewController {
     @IBOutlet weak var excerciseImg: UIImageView!
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var repsStepperValueChanged: UIStepper!
+    @IBOutlet weak var weightStepper: UIStepper!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,7 @@ class ExcerciseInfoVC: UIViewController {
         replaceBtn.layer.cornerRadius = 5
         descriptionLbl.text = str.description
         excerciseImg.image = str.img
+        self.weightStepper.stepValue = 5.0
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +53,7 @@ class ExcerciseInfoVC: UIViewController {
     }
     
     @IBAction func weightStepperValueChanged(_ sender: UIStepper) {
-        weightCount.text = Int(sender.value).description
+        let temp = Int(sender.value)
+        weightCount.text = String(temp)
     }
 }
