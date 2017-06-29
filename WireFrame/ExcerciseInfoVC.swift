@@ -26,7 +26,7 @@ class ExcerciseInfoVC: UIViewController {
     @IBOutlet weak var repsStepperValueChanged: UIStepper!
     @IBOutlet weak var weightStepper: UIStepper!
     
-    let time:TimeInterval = 3.0
+    let time:TimeInterval = 1.0
     let snooze:TimeInterval = 5.0
     var isGrantedAccess = false
     
@@ -64,19 +64,21 @@ class ExcerciseInfoVC: UIViewController {
     
     @IBAction func onDoneClicked(_ sender: Any) {
         isCompleted()
+        EXCERCISES_COMPLETED += 1
         print("\n\n\n\n\n You are here \(CURRENT_EXCERCISE)\n\n\n\n\n")
+        excercisePlaylist.remove(at: 0)
     }
     
     @IBAction func onSkipClicked(_ sender: Any) {
         isCompleted()
-        
+        EXCERCISES_SKIPPED += 1
+        excercisePlaylist.remove(at: 0)
     }
     
     @IBAction func onReplaceClicked(_ sender: Any) {
-        isCompleted()
-        
+        excercisePlaylist.remove(at: 0)
+        excercisePlaylist.append(alternateExcercises.remove(at: alternateExcercises.endIndex-1))
     }
-    
     
     func addNotification(content:UNNotificationContent,trigger:UNNotificationTrigger?, indentifier:String){
         let request = UNNotificationRequest(identifier: indentifier, content: content, trigger: trigger)
@@ -91,6 +93,7 @@ class ExcerciseInfoVC: UIViewController {
     func isCompleted() {
         CURRENT_EXCERCISE += 1
         if CURRENT_EXCERCISE >= TOTAL_EXCERCISES {
+            workoutArray.append(Workout(name: "Leg Day", completed: EXCERCISES_COMPLETED))
             let content = UNMutableNotificationContent()
             content.title = "FITIFY Workout"
             content.body = "Workout Complete 🙂"
@@ -99,6 +102,4 @@ class ExcerciseInfoVC: UIViewController {
             addNotification(content: content, trigger: trigger , indentifier: "Alarm")
         }
     }
-    
-    
 }

@@ -375,6 +375,7 @@
                                         </state>
                                         <connections>
                                             <action selector="onSkipClicked:" destination="pFq-Gd-dEU" eventType="touchUpInside" id="cu0-F9-Jvp"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="MuW-61-BvH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHf-1N-haG">
@@ -389,6 +390,7 @@
                                         </state>
                                         <connections>
                                             <action selector="onReplaceClicked:" destination="pFq-Gd-dEU" eventType="touchUpInside" id="9E1-Ba-gIt"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="iys-CV-Wzo"/>
                                         </connections>
                                     </button>
                                 </subviews>

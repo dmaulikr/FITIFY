@@ -24,15 +24,6 @@ class ExcerciseHistoryVC: UIViewController, UITableViewDelegate, UITableViewData
         Workout(name: "Leg Curl", completed: -1)
     ]
     
-    var workoutArray: [Workout] = [
-        Workout(name: "Leg Day", completed: 4),
-        Workout(name: "Chest Day", completed: 3),
-        Workout(name: "Full Body", completed: 2),
-        Workout(name: "Arms Day", completed: 4),
-        Workout(name: "Back Day", completed: 5),
-        Workout(name: "Leg Day", completed: 2)
-    ]
-    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
