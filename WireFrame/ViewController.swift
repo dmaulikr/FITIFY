@@ -15,6 +15,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     @IBOutlet weak var weightLossLbL: UILabel!
     @IBOutlet weak var dayLbl: UILabel!
     
+    
     let time:TimeInterval = 3.0
     let snooze:TimeInterval = 5.0
     var isGrantedAccess = false

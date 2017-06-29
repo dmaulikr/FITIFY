@@ -360,6 +360,7 @@
                                             <color key="titleColor" red="0.96700131379999998" green="0.96700131379999998" blue="0.96700131379999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="onDoneClicked:" destination="pFq-Gd-dEU" eventType="touchUpInside" id="3pp-fJ-X4f"/>
                                             <segue destination="BYZ-38-t0r" kind="show" identifier="doneInfo" id="jM6-tj-PHk"/>
                                         </connections>
                                     </button>
@@ -372,6 +373,9 @@
                                         <state key="normal" title="Skip">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onSkipClicked:" destination="pFq-Gd-dEU" eventType="touchUpInside" id="cu0-F9-Jvp"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHf-1N-haG">
                                         <rect key="frame" x="220" y="0.0" width="100" height="50"/>
@@ -383,6 +387,9 @@
                                         <state key="normal" title="Replace">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onReplaceClicked:" destination="pFq-Gd-dEU" eventType="touchUpInside" id="9E1-Ba-gIt"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -1274,8 +1281,8 @@
         <segue reference="hcp-ZQ-teg"/>
         <segue reference="ZcN-8D-ePh"/>
         <segue reference="cKI-lJ-GcU"/>
-        <segue reference="Rsp-aQ-w6j"/>
-        <segue reference="gN5-t2-w9H"/>
-        <segue reference="HJh-Js-3a7"/>
+        <segue reference="Ni3-t6-jLi"/>
+        <segue reference="jM6-tj-PHk"/>
+        <segue reference="wk0-6A-onI"/>
     </inferredMetricsTieBreakers>
 </document>

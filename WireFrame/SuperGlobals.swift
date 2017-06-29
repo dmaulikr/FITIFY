@@ -24,3 +24,4 @@ var alternateExcercises = [
 
 var CURRENT_EXCERCISE  = 0
 var EXCERCISES_SKIPPED = 0
+let TOTAL_EXCERCISES   = 5

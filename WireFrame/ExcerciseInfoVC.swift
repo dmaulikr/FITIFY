@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ExcerciseInfoVC: UIViewController {
     
@@ -24,6 +25,10 @@ class ExcerciseInfoVC: UIViewController {
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var repsStepperValueChanged: UIStepper!
     @IBOutlet weak var weightStepper: UIStepper!
+    
+    let time:TimeInterval = 3.0
+    let snooze:TimeInterval = 5.0
+    var isGrantedAccess = false
     
     
     override func viewDidLoad() {
@@ -56,4 +61,44 @@ class ExcerciseInfoVC: UIViewController {
         let temp = Int(sender.value)
         weightCount.text = String(temp)
     }
+    
+    @IBAction func onDoneClicked(_ sender: Any) {
+        isCompleted()
+        print("\n\n\n\n\n You are here \(CURRENT_EXCERCISE)\n\n\n\n\n")
+    }
+    
+    @IBAction func onSkipClicked(_ sender: Any) {
+        isCompleted()
+        
+    }
+    
+    @IBAction func onReplaceClicked(_ sender: Any) {
+        isCompleted()
+        
+    }
+    
+    
+    func addNotification(content:UNNotificationContent,trigger:UNNotificationTrigger?, indentifier:String){
+        let request = UNNotificationRequest(identifier: indentifier, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: {
+            (errorObject) in
+            if let error = errorObject{
+                print("Error \(error.localizedDescription) in notification \(indentifier)")
+            }
+        })
+    }
+    
+    func isCompleted() {
+        CURRENT_EXCERCISE += 1
+        if CURRENT_EXCERCISE >= TOTAL_EXCERCISES {
+            let content = UNMutableNotificationContent()
+            content.title = "FITIFY Workout"
+            content.body = "Workout Complete 🙂"
+            content.categoryIdentifier = "alarm.category"
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
+            addNotification(content: content, trigger: trigger , indentifier: "Alarm")
+        }
+    }
+    
+    
 }
