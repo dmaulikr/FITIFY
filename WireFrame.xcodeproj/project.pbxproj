@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		266771C61F0588B300C4289C /* QuestionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266771C51F0588B300C4289C /* QuestionVC.swift */; };
+		266771C81F058CBA00C4289C /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266771C71F058CBA00C4289C /* Workout.swift */; };
 		2684ACDE1EFEC1950057820B /* GoalChoiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2684ACDD1EFEC1950057820B /* GoalChoiceVC.swift */; };
 		268E9D5E1EFDFEF500C345D8 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268E9D5D1EFDFEF500C345D8 /* HistoryCell.swift */; };
 		268E9D601EFE076600C345D8 /* HistoryInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268E9D5F1EFE076600C345D8 /* HistoryInfoVC.swift */; };
@@ -82,6 +84,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		266771C51F0588B300C4289C /* QuestionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionVC.swift; sourceTree = "<group>"; };
+		266771C71F058CBA00C4289C /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		2684ACDD1EFEC1950057820B /* GoalChoiceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalChoiceVC.swift; sourceTree = "<group>"; };
 		268E9D5D1EFDFEF500C345D8 /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		268E9D5F1EFE076600C345D8 /* HistoryInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryInfoVC.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 			children = (
 				26A24B2F1EFB5D3F001A1943 /* Excercise.swift */,
 				2691D8D21EFF009800D59B2B /* SuperGlobals.swift */,
+				266771C71F058CBA00C4289C /* Workout.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				26E8AB051EFDB0180059C175 /* QuizStartVC.swift */,
 				2684ACDD1EFEC1950057820B /* GoalChoiceVC.swift */,
 				2691D8D51F002C0D00D59B2B /* AllGoalsVC.swift */,
+				266771C51F0588B300C4289C /* QuestionVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -463,11 +469,13 @@
 			files = (
 				26E8AB081EFDCB1E0059C175 /* ExcerciseHistoryVC.swift in Sources */,
 				26A24B2E1EFB57D0001A1943 /* ExcerciseInfoVC.swift in Sources */,
+				266771C61F0588B300C4289C /* QuestionVC.swift in Sources */,
 				26A24B261EFB4C0B001A1943 /* UglyCell.swift in Sources */,
 				26A24AFA1EFB474E001A1943 /* ViewController.swift in Sources */,
 				26A24B301EFB5D3F001A1943 /* Excercise.swift in Sources */,
 				2691D8D31EFF009800D59B2B /* SuperGlobals.swift in Sources */,
 				26E8AB061EFDB0180059C175 /* QuizStartVC.swift in Sources */,
+				266771C81F058CBA00C4289C /* Workout.swift in Sources */,
 				2691D8D61F002C0D00D59B2B /* AllGoalsVC.swift in Sources */,
 				2684ACDE1EFEC1950057820B /* GoalChoiceVC.swift in Sources */,
 				2691D8D81F002DE800D59B2B /* AllGoalsCell.swift in Sources */,

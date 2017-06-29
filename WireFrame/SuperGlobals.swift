@@ -22,5 +22,5 @@ var alternateExcercises = [
     Excercise(name: "Leg Curls", desc: "Lay on the bench and curl your legs", image: UIImage(named: "s3")!)
 ]
 
-var CURRENT_EXCERCISE = 0
+var CURRENT_EXCERCISE  = 0
 var EXCERCISES_SKIPPED = 0

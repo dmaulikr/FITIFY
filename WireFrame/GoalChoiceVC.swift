@@ -16,6 +16,8 @@ class GoalChoiceVC: UIViewController {
     @IBOutlet weak var StaminaButton: UIButton!
     @IBOutlet weak var changeStaminaDesc: UIButton!
     
+    @IBOutlet weak var nextBtn: UIButton!
+    
     @IBAction func changeLossDesc(_ sender: Any) {
         descriptionLbl.text = "Here we give you excercises to help you lose that last 10 pounds"
     }
@@ -30,6 +32,13 @@ class GoalChoiceVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lossBtn.layer.cornerRadius = 5
+        upperButton.layer.cornerRadius = 5
+        
+        StaminaButton.layer.cornerRadius = 5
+        
+        nextBtn.layer.cornerRadius = 5
+        
     }
 
     override func didReceiveMemoryWarning() {

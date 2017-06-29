@@ -11,6 +11,7 @@ import UIKit
 class HistoryCell: UITableViewCell {
     
     @IBOutlet weak var cellTextLbl: UILabel!
+    @IBOutlet weak var excercisesCompleteLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,8 +24,13 @@ class HistoryCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(text: String) {
+    func configureCell(text: String, isSelected: Bool) {
         cellTextLbl.text = text
+        if isSelected {
+            excercisesCompleteLbl.text = "YOLO"
+        }
     }
+    
+    
 
 }

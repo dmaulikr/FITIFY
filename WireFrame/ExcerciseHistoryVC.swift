@@ -9,8 +9,29 @@
 import UIKit
 
 class ExcerciseHistoryVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
 
-    var excercises: [String] = ["Bench Press", "Lunge", "Crunch"]
+    var workouts: [Workout] = [
+        Workout(name: "Bench Press", completed: -1),
+        Workout(name: "Lunge", completed: -1),
+        Workout(name: "Leg Curl", completed: -1)
+    ]
+    
+    var excerciseArray: [Workout] = [
+        Workout(name: "Bench Press", completed: -1),
+        Workout(name: "Lunge", completed: -1),
+        Workout(name: "Leg Curl", completed: -1)
+    ]
+    
+    var workoutArray: [Workout] = [
+        Workout(name: "Leg Day", completed: 4),
+        Workout(name: "Chest Day", completed: 3),
+        Workout(name: "Full Body", completed: 2),
+        Workout(name: "Arms Day", completed: 4),
+        Workout(name: "Back Day", completed: 5),
+        Workout(name: "Leg Day", completed: 2)
+    ]
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -19,11 +40,11 @@ class ExcerciseHistoryVC: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func indexChanged(_ sender: Any) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            excercises = ["Bench Press", "Lunge", "Crunch"]
+            workouts = excerciseArray
             self.tableView.reloadData()
             break
         case 1:
-            excercises = ["Leg Day", "Arm Day", "Abs Day"]
+            workouts = workoutArray
             self.tableView.reloadData()
             break
         default:
@@ -45,11 +66,37 @@ class ExcerciseHistoryVC: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell") as? HistoryCell {
-            cell.configureCell(text: excercises[indexPath.row])
+            cell.configureCell(text: workouts[indexPath.row].nameOfWorkout, isSelected: false)
             cell.backgroundColor = UIColor.white
-            if excercises[indexPath.row] == "Bench Press" {
+            cell.excercisesCompleteLbl.text = ""
+            
+            switch workouts[indexPath.row].numOfExcercisesCompleted {
+            case -1:
+                break
+            case 1:
                 cell.backgroundColor = UIColor.red
+                cell.excercisesCompleteLbl.text = workouts[indexPath.row].fractionOfExcercisesCompleted
+                break
+            case 2:
+                cell.backgroundColor = UIColor.red
+                cell.excercisesCompleteLbl.text = workouts[indexPath.row].fractionOfExcercisesCompleted
+                break
+            case 3:
+                cell.backgroundColor = UIColor.yellow
+                cell.excercisesCompleteLbl.text = workouts[indexPath.row].fractionOfExcercisesCompleted
+                break
+            case 4:
+                cell.backgroundColor = UIColor.yellow
+                cell.excercisesCompleteLbl.text = workouts[indexPath.row].fractionOfExcercisesCompleted
+                break
+            case 5:
+                cell.backgroundColor = UIColor.green
+                cell.excercisesCompleteLbl.text = workouts[indexPath.row].fractionOfExcercisesCompleted
+                break
+            default:
+                break
             }
+            
             return cell
         }
         return UglyCell()
@@ -60,7 +107,7 @@ class ExcerciseHistoryVC: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return excercises.count
+        return workouts.count
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -73,7 +120,7 @@ class ExcerciseHistoryVC: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let e = excercises[indexPath.row]
+        let e = workouts[indexPath.row].nameOfWorkout
         performSegue(withIdentifier: "HistoryInfo", sender: e)
     }
     
