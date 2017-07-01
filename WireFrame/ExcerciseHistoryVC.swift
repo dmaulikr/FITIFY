@@ -11,7 +11,6 @@ import UIKit
 class ExcerciseHistoryVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-
     var workouts: [Workout] = [
         Workout(name: "Bench Press", completed: -1),
         Workout(name: "Lunge", completed: -1),
@@ -65,23 +64,24 @@ class ExcerciseHistoryVC: UIViewController, UITableViewDelegate, UITableViewData
             case -1:
                 break
             case 1:
-                cell.backgroundColor = UIColor.red
+                cell.backgroundColor = UIColor(red: 1, green: 153/255, blue: 153/255, alpha: 1)
                 cell.excercisesCompleteLbl.text = workouts[indexPath.row].fractionOfExcercisesCompleted
                 break
             case 2:
-                cell.backgroundColor = UIColor.red
+                cell.backgroundColor = UIColor(red: 1, green: 153/255, blue: 153/255, alpha: 1)
                 cell.excercisesCompleteLbl.text = workouts[indexPath.row].fractionOfExcercisesCompleted
                 break
             case 3:
-                cell.backgroundColor = UIColor.yellow
+                cell.backgroundColor = UIColor(red: 1, green: 1, blue: 153/255, alpha: 1)
                 cell.excercisesCompleteLbl.text = workouts[indexPath.row].fractionOfExcercisesCompleted
                 break
             case 4:
-                cell.backgroundColor = UIColor.yellow
+                cell.backgroundColor = UIColor(red: 1, green: 1, blue: 153/255, alpha: 1)
                 cell.excercisesCompleteLbl.text = workouts[indexPath.row].fractionOfExcercisesCompleted
                 break
             case 5:
-                cell.backgroundColor = UIColor.green
+                cell.backgroundColor = UIColor(red: 204/255, green: 1, blue: 153/255, alpha: 1)
+
                 cell.excercisesCompleteLbl.text = workouts[indexPath.row].fractionOfExcercisesCompleted
                 break
             default:
