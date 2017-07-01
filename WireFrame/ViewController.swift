@@ -65,20 +65,31 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
         
         if identifier == "done" {
             let newContent = request.content.mutableCopy() as! UNMutableNotificationContent
-            CURRENT_EXCERCISE += 1
-            if CURRENT_EXCERCISE >= excercisePlaylist.count {
+
+            if excercisePlaylist.count == 0 {
                 newContent.body = "Workout Complete 🙂"
+                workoutArray.append(Workout(name: "Leg Day", completed: EXCERCISES_COMPLETED))
                 addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
+                self.tableView.reloadData()
                 return
             }
-            newContent.body = "Your current excercise is: \(excercisePlaylist[CURRENT_EXCERCISE].name)"
+            EXCERCISES_COMPLETED += 1
+            newContent.body = "Your current excercise is: \(excercisePlaylist.remove(at: 0).name)"
+            self.tableView.reloadData()
             addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
         }
         
         if identifier == "skip" {
             let newContent = request.content.mutableCopy() as! UNMutableNotificationContent
-            excercisePlaylist.remove(at: 0)
-            newContent.body = "Your Current Excercise is: \(excercisePlaylist[0].name)"
+            
+            if excercisePlaylist.count == 0 {
+                newContent.body = "Workout Complete 🙂"
+                workoutArray.append(Workout(name: "Leg Day", completed: EXCERCISES_COMPLETED))
+                addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
+                self.tableView.reloadData()
+                return
+            }
+            newContent.body = "Your current excercise is: \(excercisePlaylist.remove(at: 0).name)"
             self.tableView.reloadData()
             addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
         }
@@ -149,7 +160,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
             let content = UNMutableNotificationContent()
             content.title = "FITIFY Workout"
             //content.subtitle = "First Alarm"
-            content.body = "Your current excercise is: \(excercisePlaylist[CURRENT_EXCERCISE].name)"
+            content.body = "Your current excercise is: \(excercisePlaylist.remove(at: 0).name)"
             content.categoryIdentifier = "alarm.category"
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
             addNotification(content: content, trigger: trigger , indentifier: "Alarm")
