@@ -14,7 +14,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     @IBOutlet weak var startWorkout: UIButton!
     @IBOutlet weak var weightLossLbL: UILabel!
     @IBOutlet weak var dayLbl: UILabel!
-    
+    var wasDisplayed = [false, false, false, false, false]
     
     let time:TimeInterval = 3.0
     let snooze:TimeInterval = 5.0
@@ -58,40 +58,25 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
         completionHandler([.alert,.sound])
     }
     
+    /*
+        Handles the notifications:
+            done:    Handles the done button
+            skip:    Handles the skip button
+            replace: Handles the replace button
+     */
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         let identifier = response.actionIdentifier
         let request = response.notification.request
         
+        self.tableView.reloadData()
+        
         if identifier == "done" {
-            let newContent = request.content.mutableCopy() as! UNMutableNotificationContent
-
-            if excercisePlaylist.count == 0 {
-                newContent.body = "Workout Complete 🙂"
-                workoutArray.append(Workout(name: "Leg Day", completed: EXCERCISES_COMPLETED))
-                addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
-                self.tableView.reloadData()
-                return
-            }
-            EXCERCISES_COMPLETED += 1
-            newContent.body = "Your current excercise is: \(excercisePlaylist.remove(at: 0).name)"
-            self.tableView.reloadData()
-            addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
+            doneAndSkipHandler(isDone: true, request: request)
         }
         
         if identifier == "skip" {
-            let newContent = request.content.mutableCopy() as! UNMutableNotificationContent
-            
-            if excercisePlaylist.count == 0 {
-                newContent.body = "Workout Complete 🙂"
-                workoutArray.append(Workout(name: "Leg Day", completed: EXCERCISES_COMPLETED))
-                addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
-                self.tableView.reloadData()
-                return
-            }
-            newContent.body = "Your current excercise is: \(excercisePlaylist.remove(at: 0).name)"
-            self.tableView.reloadData()
-            addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
+            doneAndSkipHandler(isDone: false, request: request)
         }
         
         if identifier == "replace" {
@@ -104,6 +89,38 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
         }
         
         completionHandler()
+    }
+    
+    func doneAndSkipHandler(isDone: Bool, request: UNNotificationRequest) {
+        
+        if isDone {
+            EXCERCISES_COMPLETED += 1
+        }
+        
+        let newContent = request.content.mutableCopy() as! UNMutableNotificationContent
+        
+        CURRENT_EXCERCISE    += 1
+        
+        if CURRENT_EXCERCISE >= TOTAL_EXCERCISES {
+            excercisePlaylist.removeAll()
+            self.tableView.reloadData()
+            newContent.body = "Workout Complete 🙂"
+            workoutArray.append(Workout(name: "Leg Day", completed: EXCERCISES_COMPLETED))
+            addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
+            self.tableView.reloadData()
+            return
+        }
+        
+        if wasDisplayed[0] {
+            excercisePlaylist.removeFirst()
+            wasDisplayed.removeFirst()
+        }
+        
+        newContent.body = "Your current excercise is: \(excercisePlaylist[0].name)"
+        wasDisplayed[0] = true
+        
+        self.tableView.reloadData()
+        addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
     }
     
     override func viewDidLoad() {
@@ -123,7 +140,6 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
                     self.present(alert , animated: true, completion: nil)
                 }
         })
-        
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -159,8 +175,11 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
         if isGrantedAccess{
             let content = UNMutableNotificationContent()
             content.title = "FITIFY Workout"
-            //content.subtitle = "First Alarm"
-            content.body = "Your current excercise is: \(excercisePlaylist.remove(at: 0).name)"
+            //isStartButtonClicked = true
+            wasDisplayed[0] = true
+            content.body = "Your current excercise is: \(excercisePlaylist[0].name)"
+            self.tableView.reloadData()
+            //EXCERCISES_COMPLETED += 1
             content.categoryIdentifier = "alarm.category"
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
             addNotification(content: content, trigger: trigger , indentifier: "Alarm")

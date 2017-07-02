@@ -63,9 +63,8 @@ class ExcerciseInfoVC: UIViewController {
     }
     
     @IBAction func onDoneClicked(_ sender: Any) {
-        isCompleted()
         EXCERCISES_COMPLETED += 1
-        print("\n\n\n\n\n You are here \(CURRENT_EXCERCISE)\n\n\n\n\n")
+        isCompleted()
         excercisePlaylist.remove(at: 0)
     }
     

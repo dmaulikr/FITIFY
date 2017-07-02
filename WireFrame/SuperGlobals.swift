@@ -24,6 +24,8 @@ var alternateExcercises = [
     Excercise(name: "Leg Curls", desc: "Lay on the bench and curl your legs", image: UIImage(named: "s3")!)
 ]
 
+var temporaryContainer: [Excercise]!
+
 var workoutArray: [Workout] = [
     Workout(name: "Leg Day", completed: 4),
     Workout(name: "Chest Day", completed: 3),
