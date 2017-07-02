@@ -30,7 +30,6 @@
 		26A24B3D1EFC54CF001A1943 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A24B3C1EFC54CF001A1943 /* NotificationViewController.swift */; };
 		26A24B401EFC54CF001A1943 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26A24B3E1EFC54CF001A1943 /* MainInterface.storyboard */; };
 		26A24B441EFC54CF001A1943 /* LockExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 26A24B351EFC54CF001A1943 /* LockExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		26C6E0771F096EB200E9038B /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 26C6E0761F096EB200E9038B /* README.md */; };
 		26E8AAF81EFD94880059C175 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26A24B031EFB474E001A1943 /* Info.plist */; };
 		26E8AAF91EFD967A0059C175 /* Rubik300.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26E8AAEE1EFD93090059C175 /* Rubik300.ttf */; };
 		26E8AAFA1EFD967A0059C175 /* Rubik 300italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26E8AAEF1EFD93090059C175 /* Rubik 300italic.ttf */; };
@@ -115,7 +114,6 @@
 		26A24B3C1EFC54CF001A1943 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		26A24B3F1EFC54CF001A1943 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		26A24B411EFC54CF001A1943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		26C6E0761F096EB200E9038B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = WireFrame/README.md; sourceTree = "<group>"; };
 		26E8AAEE1EFD93090059C175 /* Rubik300.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rubik300.ttf; sourceTree = "<group>"; };
 		26E8AAEF1EFD93090059C175 /* Rubik 300italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik 300italic.ttf"; sourceTree = "<group>"; };
 		26E8AAF01EFD93090059C175 /* Rubik 500.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik 500.ttf"; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 		26A24AEB1EFB474E001A1943 = {
 			isa = PBXGroup;
 			children = (
-				26C6E0761F096EB200E9038B /* README.md */,
 				26A24AF61EFB474E001A1943 /* WireFrame */,
 				26A24B0B1EFB474E001A1943 /* WireFrameTests */,
 				26A24B161EFB474E001A1943 /* WireFrameUITests */,
@@ -476,7 +473,6 @@
 				26A24B261EFB4C0B001A1943 /* UglyCell.swift in Sources */,
 				26A24AFA1EFB474E001A1943 /* ViewController.swift in Sources */,
 				26A24B301EFB5D3F001A1943 /* Excercise.swift in Sources */,
-				26C6E0771F096EB200E9038B /* README.md in Sources */,
 				2691D8D31EFF009800D59B2B /* SuperGlobals.swift in Sources */,
 				26E8AB061EFDB0180059C175 /* QuizStartVC.swift in Sources */,
 				266771C81F058CBA00C4289C /* Workout.swift in Sources */,

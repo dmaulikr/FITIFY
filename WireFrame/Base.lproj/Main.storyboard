@@ -171,26 +171,53 @@
                                     <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CoA-AN-MDE"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congradulations you are Done !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkT-1p-fBC">
+                                <rect key="frame" x="87" y="380" width="240.66666666666669" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNM-Ad-4Fk">
+                                <rect key="frame" x="92" y="420" width="230" height="60"/>
+                                <color key="backgroundColor" red="0.45696700890000003" green="0.6599144629" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="9do-4r-EfQ"/>
+                                    <constraint firstAttribute="height" constant="60" id="gKX-Ik-hLE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Check Your Progress">
+                                    <color key="titleColor" red="0.96852236989999996" green="0.96868795159999999" blue="0.96851199870000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="B1y-Ms-T4Y" kind="show" id="zjv-8S-CD3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="McR-Kb-FTA" secondAttribute="bottom" constant="30" id="103-Fi-IHE"/>
+                            <constraint firstItem="lNM-Ad-4Fk" firstAttribute="top" secondItem="mHw-22-F0H" secondAttribute="bottom" constant="200" id="24z-K7-8sz"/>
                             <constraint firstItem="isu-JQ-b0O" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="9KP-tH-Qoo"/>
                             <constraint firstAttribute="trailing" secondItem="mHw-22-F0H" secondAttribute="trailing" id="9MV-y3-zWj"/>
                             <constraint firstItem="8PT-qU-cdg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="A2d-vS-0AZ"/>
                             <constraint firstItem="isu-JQ-b0O" firstAttribute="top" secondItem="8PT-qU-cdg" secondAttribute="bottom" constant="21" id="Acn-Lv-yo8"/>
                             <constraint firstItem="nAT-vE-AMw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="EKh-Zv-Q3z"/>
                             <constraint firstItem="mHw-22-F0H" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="ImK-7D-bOd"/>
+                            <constraint firstItem="KkT-1p-fBC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mul-tV-zZ4"/>
                             <constraint firstAttribute="trailing" secondItem="8PT-qU-cdg" secondAttribute="trailing" id="Qjn-pQ-ucv"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nAT-vE-AMw" secondAttribute="bottom" constant="100" id="Twr-hq-fhK"/>
                             <constraint firstItem="mHw-22-F0H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VBu-nh-ayd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nAT-vE-AMw" secondAttribute="trailing" constant="5" id="YTd-Gr-Y6A"/>
+                            <constraint firstItem="lNM-Ad-4Fk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bju-8T-8Oi"/>
                             <constraint firstItem="McR-Kb-FTA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gkj-he-YD1"/>
                             <constraint firstItem="nAT-vE-AMw" firstAttribute="top" secondItem="8PT-qU-cdg" secondAttribute="bottom" constant="190" id="j3W-Ba-LdQ"/>
+                            <constraint firstItem="KkT-1p-fBC" firstAttribute="top" secondItem="mHw-22-F0H" secondAttribute="bottom" constant="160" id="vPw-1X-HLJ"/>
                             <constraint firstItem="8PT-qU-cdg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yp1-U9-bis"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="checkProgress" destination="lNM-Ad-4Fk" id="3VF-li-On9"/>
+                        <outlet property="congradulatoryLbl" destination="KkT-1p-fBC" id="MDA-mP-o1Y"/>
                         <outlet property="dayLbl" destination="kAr-Np-swJ" id="1fV-6N-cfi"/>
                         <outlet property="startWorkout" destination="McR-Kb-FTA" id="gXB-7C-cjw"/>
                         <outlet property="tableView" destination="nAT-vE-AMw" id="Yxy-Z8-w8g"/>
@@ -200,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1252" y="59"/>
+            <point key="canvasLocation" x="-1252.1739130434783" y="58.695652173913047"/>
         </scene>
         <!--Excercise InfoVC-->
         <scene sceneID="kBA-Gq-gzd">
@@ -240,7 +267,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTh-El-Wc9">
-                                <rect key="frame" x="170.33333333333334" y="95" width="73.333333333333314" height="35"/>
+                                <rect key="frame" x="170.66666666666663" y="95" width="73.333333333333343" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="fQ2-ZN-RmT"/>
                                 </constraints>
@@ -989,7 +1016,7 @@
                                 <rect key="frame" x="0.0" y="69" width="414" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Workout History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1w-T6-vmq">
-                                        <rect key="frame" x="62.666666666666657" y="19" width="290.33333333333337" height="37"/>
+                                        <rect key="frame" x="62" y="19" width="290.33333333333331" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="frC-WQ-8PG"/>
                                         </constraints>

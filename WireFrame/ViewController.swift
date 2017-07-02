@@ -14,6 +14,9 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     @IBOutlet weak var startWorkout: UIButton!
     @IBOutlet weak var weightLossLbL: UILabel!
     @IBOutlet weak var dayLbl: UILabel!
+    @IBOutlet weak var checkProgress: UIButton!
+    @IBOutlet weak var congradulatoryLbl: UILabel!
+    
     var wasDisplayed = [false, false, false, false, false]
     
     let time:TimeInterval = 3.0
@@ -108,6 +111,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
             workoutArray.append(Workout(name: "Leg Day", completed: EXCERCISES_COMPLETED))
             addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
             self.tableView.reloadData()
+            hideAll()
             return
         }
         
@@ -142,6 +146,9 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
         })
         tableView.delegate = self
         tableView.dataSource = self
+        if excercisePlaylist.isEmpty {
+            hideAll()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -215,6 +222,14 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
         if segue.identifier == "history" {
             
         }
+    }
+    
+    
+    func hideAll() {
+        startWorkout.isHidden      = true
+        tableView.isHidden         = true
+        checkProgress.isHidden     = false
+        congradulatoryLbl.isHidden = false
     }
 }
 

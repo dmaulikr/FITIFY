@@ -101,4 +101,5 @@ class ExcerciseInfoVC: UIViewController {
             addNotification(content: content, trigger: trigger , indentifier: "Alarm")
         }
     }
+    
 }
