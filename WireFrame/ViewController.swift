@@ -23,7 +23,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     var temp: String?
     
     
-    var wasDisplayed = [false, false, false, false, false]
+    var wasDisplayed = [false, false, false, false, false, false, false, false]
     
     let time:TimeInterval = 3.0
     let snooze:TimeInterval = 5.0
@@ -102,9 +102,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     }
     
     func workoutCompleteMessage(request: UNNotificationRequest) {
-        self.tableView.reloadData()
+
         workoutArray.append(Workout(name: "Leg Day", completed: EXCERCISES_COMPLETED))
-        workoutCompleteMessage(request: request)
         self.tableView.reloadData()
         hideAll()
         
@@ -127,10 +126,13 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
             if isInSkippedExcercisesMode {
                 if excercisePlaylist.count == 0 {
                     workoutCompleteMessage(request: request)
+                    self.tableView.reloadData()
                     return
                 }
+                
             } else {
                 workoutCompleteMessage(request: request)
+                self.tableView.reloadData()
                 return
             }
         }
