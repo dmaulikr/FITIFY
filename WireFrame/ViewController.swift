@@ -17,6 +17,9 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     @IBOutlet weak var checkProgress: UIButton!
     @IBOutlet weak var congradulatoryLbl: UILabel!
     @IBOutlet weak var newGoalLbl: UIButton!
+    @IBOutlet var doSkippedExcercisesBtn: UIButton!
+    
+    
     var temp: String?
     
     
@@ -75,6 +78,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
         let identifier = response.actionIdentifier
         let request = response.notification.request
         
+        
         self.tableView.reloadData()
         
         if identifier == "done" {
@@ -97,30 +101,53 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
         completionHandler()
     }
     
+    func workoutCompleteMessage(request: UNNotificationRequest) {
+        self.tableView.reloadData()
+        workoutArray.append(Workout(name: "Leg Day", completed: EXCERCISES_COMPLETED))
+        workoutCompleteMessage(request: request)
+        self.tableView.reloadData()
+        hideAll()
+        
+        let newContent = request.content.mutableCopy() as! UNMutableNotificationContent
+        newContent.body = "Workout Complete 🙂"
+        addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
+    }
+    
     func doneAndSkipHandler(isDone: Bool, request: UNNotificationRequest) {
         
         if isDone {
             EXCERCISES_COMPLETED += 1
+        } else {
+            skipped.append(excercisePlaylist.first!)
         }
         
-        let newContent = request.content.mutableCopy() as! UNMutableNotificationContent
-        
-        CURRENT_EXCERCISE    += 1
+        CURRENT_EXCERCISE += 1
         
         if CURRENT_EXCERCISE >= TOTAL_EXCERCISES {
-            excercisePlaylist.removeAll()
-            self.tableView.reloadData()
-            newContent.body = "Workout Complete 🙂"
-            workoutArray.append(Workout(name: "Leg Day", completed: EXCERCISES_COMPLETED))
-            addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
-            self.tableView.reloadData()
-            hideAll()
-            return
+            if isInSkippedExcercisesMode {
+                if excercisePlaylist.count == 0 {
+                    workoutCompleteMessage(request: request)
+                    return
+                }
+            } else {
+                workoutCompleteMessage(request: request)
+                return
+            }
         }
         
         if wasDisplayed[0] {
             excercisePlaylist.removeFirst()
             wasDisplayed.removeFirst()
+        }
+        
+        let newContent = request.content.mutableCopy() as! UNMutableNotificationContent
+        if excercisePlaylist.isEmpty && isInSkippedExcercisesMode {
+            newContent.body = "Workout Complete 🙂"
+            addNotification(content: newContent, trigger: request.trigger, indentifier: request.identifier)
+            self.tableView.reloadData()
+            hideAll()
+
+            return
         }
         
         newContent.body = "Your current excercise is: \(excercisePlaylist[0].name)"
@@ -132,8 +159,10 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startWorkout.layer.cornerRadius = 5
-        newGoalLbl.layer.cornerRadius = 5
+        startWorkout.layer.cornerRadius           = 5
+        newGoalLbl.layer.cornerRadius             = 5
+        doSkippedExcercisesBtn.layer.cornerRadius = 5
+        checkProgress.layer.cornerRadius          = 5
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(
             options: [.alert,.sound,.badge],
@@ -160,8 +189,14 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "uglycell") as? UglyCell {
-            let excercise = excercisePlaylist[indexPath.row]
-            cell.configureCell(image: excercise.img!, text: excercise.name)
+            if !excercisePlaylist.isEmpty {
+                let excercise = excercisePlaylist[indexPath.row]
+                cell.configureCell(image: excercise.img!, text: excercise.name)
+                
+            } else {
+                return UglyCell()
+            }
+            
             return cell
         }
         return UglyCell()
@@ -189,11 +224,9 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
         if isGrantedAccess{
             let content = UNMutableNotificationContent()
             content.title = "FITIFY Workout"
-            //isStartButtonClicked = true
             wasDisplayed[0] = true
             content.body = "Your current excercise is: \(excercisePlaylist[0].name)"
             self.tableView.reloadData()
-            //EXCERCISES_COMPLETED += 1
             content.categoryIdentifier = "alarm.category"
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
             addNotification(content: content, trigger: trigger , indentifier: "Alarm")
@@ -233,12 +266,28 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
         }
     }
     
+    @IBAction func onDoSkippedExcercisesClicked(_ sender: Any) {
+        skippedExcercisesMode()
+    }
     
     func hideAll() {
-        startWorkout.isHidden      = true
-        tableView.isHidden         = true
-        checkProgress.isHidden     = false
-        congradulatoryLbl.isHidden = false
+        startWorkout.isHidden           = true
+        tableView.isHidden              = true
+        doSkippedExcercisesBtn.isHidden = false
+        checkProgress.isHidden          = false
+        congradulatoryLbl.isHidden      = false
+    }
+    
+    func skippedExcercisesMode() {
+        startWorkout.isHidden           = false
+        tableView.isHidden              = false
+        doSkippedExcercisesBtn.isHidden = true
+        checkProgress.isHidden          = true
+        congradulatoryLbl.isHidden      = true
+        
+        isInSkippedExcercisesMode = true
+        excercisePlaylist = skipped
+        self.tableView.reloadData()
     }
 }
 

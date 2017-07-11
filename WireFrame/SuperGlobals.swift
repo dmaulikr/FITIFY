@@ -24,7 +24,7 @@ var alternateExcercises = [
     Excercise(name: "Leg Curls", desc: "Lay on the bench and curl your legs", image: UIImage(named: "s9")!)
 ]
 
-var temporaryContainer: [Excercise]!
+
 
 var workoutArray: [Workout] = [
     Workout(name: "Leg Day", completed: 4),
@@ -35,6 +35,12 @@ var workoutArray: [Workout] = [
     Workout(name: "Leg Day", completed: 2)
 ]
 
+// CONTAINERS
+var skipped = [Excercise]()
+var temporaryContainer: [Excercise]!
+
+// FLAGS
+var isInSkippedExcercisesMode: Bool = false
 var CURRENT_EXCERCISE    = 0
 var EXCERCISES_SKIPPED   = 0
 var EXCERCISES_COMPLETED = 0

@@ -71,6 +71,7 @@ class ExcerciseInfoVC: UIViewController {
     @IBAction func onSkipClicked(_ sender: Any) {
         isCompleted()
         EXCERCISES_SKIPPED += 1
+        skipped.append(excercisePlaylist.first!)
         excercisePlaylist.remove(at: 0)
     }
     
@@ -91,7 +92,21 @@ class ExcerciseInfoVC: UIViewController {
     
     func isCompleted() {
         CURRENT_EXCERCISE += 1
+        
         if CURRENT_EXCERCISE >= TOTAL_EXCERCISES {
+            if isInSkippedExcercisesMode {
+                if excercisePlaylist.isEmpty {
+                    workoutArray.append(Workout(name: "Leg Day", completed: EXCERCISES_COMPLETED))
+                    let content = UNMutableNotificationContent()
+                    content.title = "FITIFY Workout"
+                    content.body = "Workout Complete 🙂"
+                    content.categoryIdentifier = "alarm.category"
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
+                    addNotification(content: content, trigger: trigger , indentifier: "Alarm")
+                }
+                return
+            }
+            
             workoutArray.append(Workout(name: "Leg Day", completed: EXCERCISES_COMPLETED))
             let content = UNMutableNotificationContent()
             content.title = "FITIFY Workout"
