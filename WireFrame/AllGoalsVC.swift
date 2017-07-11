@@ -53,7 +53,35 @@ class AllGoalsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let e = goals[indexPath.row]
-        performSegue(withIdentifier: "toExcercisePlaylist", sender: e)
+        var transferable: String!
+        switch e {
+        case "Lose 20 Lbs":
+            transferable = "Weight Loss"
+            break
+        case "6 Pack Abs":
+            transferable = "Ab Gain"
+            break
+        case "Stronger Legs":
+            transferable = "Big Legs"
+            break
+        case "Bigger Arms":
+            transferable = "Mass Gain"
+            break
+        default:
+            break
+        }
+        
+        performSegue(withIdentifier: "toExcercisePlaylist", sender: transferable)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toExcercisePlaylist" {
+            if let detailsVC = segue.destination as? ViewController {
+                if let str = sender as? String {
+                    detailsVC.temp = str
+                }
+            }
+        }
     }
     
 

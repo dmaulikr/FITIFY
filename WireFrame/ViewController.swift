@@ -16,6 +16,9 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     @IBOutlet weak var dayLbl: UILabel!
     @IBOutlet weak var checkProgress: UIButton!
     @IBOutlet weak var congradulatoryLbl: UILabel!
+    @IBOutlet weak var newGoalLbl: UIButton!
+    var temp: String?
+    
     
     var wasDisplayed = [false, false, false, false, false]
     
@@ -130,12 +133,13 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         startWorkout.layer.cornerRadius = 5
+        newGoalLbl.layer.cornerRadius = 5
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(
             options: [.alert,.sound,.badge],
             completionHandler: { (granted,error) in
                 self.isGrantedAccess = granted
-                if granted{
+                if granted {
                     self.setCategories()
                 } else {
                     let alert = UIAlertController(title: "Notification Access", message: "In order to use this application, turn on notification permissions.", preferredStyle: .alert)
@@ -148,6 +152,9 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
         tableView.dataSource = self
         if excercisePlaylist.isEmpty {
             hideAll()
+        }
+        if temp != nil {
+            weightLossLbL.text = temp
         }
     }
     
@@ -191,6 +198,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate, UITabl
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
             addNotification(content: content, trigger: trigger , indentifier: "Alarm")
         }
+        
+        startWorkout.setTitle("Continue", for: .normal)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

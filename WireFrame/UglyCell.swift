@@ -15,6 +15,7 @@ class UglyCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        mainImg.isHidden = true
         mainImg.layer.cornerRadius = 5.0
         mainImg.clipsToBounds = true
     }
